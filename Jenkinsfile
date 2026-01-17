@@ -5,11 +5,15 @@ jdk 'jdk11' // Make sure JDK is configured in Jenkins
 }
 stages {
 stage('Build') {
-steps {
-echo 'Building application...'
-sh './build.sh'
+    steps {
+        echo 'Building application...'
+        sh '''
+            chmod +x build.sh
+            ./build.sh
+        '''
+    }
 }
-}
+
 stage('Test') {
 steps {
 echo 'Running tests...'
